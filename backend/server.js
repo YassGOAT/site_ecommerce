@@ -16,8 +16,24 @@ app.get('/', (req, res) => {
     return res.json('From Backend side');
 })
 
-app.get('/products', (req, res) => {
+app.get('/utilisateur', (req, res) => {
     const sql = 'SELECT * FROM utilisateur';
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    })
+})
+
+app.get('/produit', (req, res) => {
+    const sql = 'SELECT * FROM produit';
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    })
+})
+
+app.get('/categorie', (req, res) => {
+    const sql = 'SELECT * FROM categorie';
     db.query(sql, (err, data) => {
         if (err) return res.json(err);
         return res.json(data);
