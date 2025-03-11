@@ -1,7 +1,7 @@
 // components/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Optionnel, sinon les styles de App.css s'appliquent
+import '../App.css'; // Optionnel, sinon les styles de App.css s'appliquent
 // Si tu souhaites centraliser tous les styles, tu peux aussi utiliser App.css
 
 function Home() {

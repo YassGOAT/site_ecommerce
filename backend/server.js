@@ -47,7 +47,7 @@ app.get('/produit', (req, res) => {
 
 // Récupérer toutes les catégories
 app.get('/categorie', (req, res) => {
-  const sql = 'SELECT * FROM categorie';
+  const sql = 'SELECT * FROM Categorie ORDER BY nom_categorie ASC';
   db.query(sql, (err, data) => {
     if (err) return res.status(500).json(err);
     res.json(data);
