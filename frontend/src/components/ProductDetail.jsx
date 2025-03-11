@@ -1,7 +1,7 @@
 // ProductDetail.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import './App.css';
+import '../App.css';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -11,10 +11,10 @@ function ProductDetail() {
     fetch(`http://localhost:8081/product/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }, [id]);
 
-  if (!product) return <div>Chargement...</div>;
+  if (!product) return <div className="container"><p>Chargement...</p></div>;
 
   return (
     <div className="container">

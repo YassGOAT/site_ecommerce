@@ -1,8 +1,9 @@
+// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from 'components/Home.jsx';
-import ProductDetail from 'components/ProductDetail.jsx';
-import Cart from 'components/Cart.jsx';
+import Home from './components/Home.jsx';
+import ProductDetail from './components/ProductDetail.jsx';
+import Cart from './components/Cart.jsx';
 
 function App() {
   return (
