@@ -1,31 +1,142 @@
 /* App.css */
+
+/* Styles généraux */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Container */
 .container {
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+/* Product Grid */
 .product-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
 }
 
+/* Product Card */
 .product-card {
+  background-color: #fff;
   border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
+  border-radius: 8px;
   width: 250px;
-  border-radius: 4px;
-  text-align: center;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.product-card a {
-  text-decoration: none;
-  color: blue;
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.product-price {
+  font-size: 18px;
   font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Bouton */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Product Detail Image */
+.product-detail-image {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Avis */
+.avis-list {
+  list-style: none;
+  padding: 0;
+}
+
+.avis-list li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Media queries pour une meilleure réactivité */
+@media (max-width: 768px) {
+  .product-grid {
+    flex-direction: column;
+    align-items: center;
+  }
 }

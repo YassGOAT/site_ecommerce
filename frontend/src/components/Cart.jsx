@@ -1,6 +1,6 @@
-// Cart.jsx
+// components/Cart.jsx
 import React from 'react';
-import '../App.css';
+import './Cart.css'; // Optionnel, sinon utilise App.css
 
 function Cart() {
   return (
