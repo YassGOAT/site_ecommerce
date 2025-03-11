@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import './Navbar.css';
+import logo from '../assets/logo.png';
 
 function Navbar() {
   const [categories, setCategories] = useState([]);
@@ -10,26 +11,25 @@ function Navbar() {
     fetch('http://localhost:8081/categorie')
       .then(res => res.json())
       .then(data => {
-        // Trie les catégories par ordre alphabétique
-        const sorted = data.sort((a, b) => a.nom_categorie.localeCompare(b.nom_categorie));
+        const sorted = data.sort((a, b) =>
+          a.nom_categorie.localeCompare(b.nom_categorie)
+        );
         setCategories(sorted);
       })
-      .catch(err => console.error('Erreur lors de la récupération des catégories :', err));
+      .catch(err =>
+        console.error('Erreur lors de la récupération des catégories :', err)
+      );
   }, []);
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const closeDropdown = () => {
-    setShowDropdown(false);
-  };
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+  const closeDropdown = () => setShowDropdown(false);
 
   return (
-    <header className="header">
+    <header className="navbar">
       <div className="nav-container">
-        <div className="logo">
-          <Link to="/" className="nav-logo">E-Commerce</Link>
+        <div className="nav-logo-container">
+          <img src={logo} alt="Logo" className="nav-logo-image" />
+          <Link to="/" className="nav-logo-text">AnimeShop</Link>
         </div>
         <nav>
           <ul className="nav-menu">
@@ -42,10 +42,10 @@ function Navbar() {
               </span>
               {showDropdown && (
                 <ul className="dropdown-menu" onMouseLeave={closeDropdown}>
-                  {categories.map(categorie => (
-                    <li key={categorie.id_categorie} className="dropdown-item">
-                      <Link to={`/categorie/${categorie.id_categorie}`} className="dropdown-link">
-                        {categorie.nom_categorie}
+                  {categories.map(cat => (
+                    <li key={cat.id_categorie} className="dropdown-item">
+                      <Link to={`/categorie/${cat.id_categorie}`} className="dropdown-link">
+                        {cat.nom_categorie}
                       </Link>
                     </li>
                   ))}
@@ -57,6 +57,9 @@ function Navbar() {
             </li>
           </ul>
         </nav>
+        <div className="auth-links">
+          <Link to="/auth" className="nav-link">Se connecter / S'inscrire</Link>
+        </div>
       </div>
     </header>
   );

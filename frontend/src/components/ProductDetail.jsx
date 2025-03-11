@@ -1,6 +1,7 @@
-// components/ProductDetail.jsx
+// src/components/ProductDetail.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import './ProductDetail.css';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ function ProductDetail() {
     <div className="container">
       <h1>{product.nom}</h1>
       <img
-        src={product.image_url || 'https://via.placeholder.com/250'}
+        src={product.image_url || 'https://via.placeholder.com/400x300?text=Produit'}
         alt={product.nom}
         className="product-detail-image"
       />

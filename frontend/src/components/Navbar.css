@@ -1,0 +1,87 @@
+/* src/components/Navbar.css */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: 0 20px;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+  position: relative;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 5px 20px;
+}
+
+.dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown-link {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Auth links */
+.auth-links {
+  margin-left: auto;
+}
+
+.auth-links .nav-link {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+}

@@ -1,11 +1,11 @@
-// components/Footer.jsx
+// src/components/Footer.jsx
 import React from 'react';
-import '../App.css'; // Voir ensuite le CSS pour Footer
+import './Footer.css';
 
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} E-Commerce. Tous droits réservés.</p>
+      <p>&copy; {new Date().getFullYear()} AnimeShop. Tous droits réservés.</p>
     </footer>
   );
 }
