@@ -1,3 +1,4 @@
+// src/components/Navbar.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -6,8 +7,10 @@ import logo from '../assets/logo.png';
 function Navbar() {
   const [categories, setCategories] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Récupération des catégories
     fetch('http://localhost:8081/categorie')
       .then(res => res.json())
       .then(data => {
@@ -19,10 +22,21 @@ function Navbar() {
       .catch(err =>
         console.error('Erreur lors de la récupération des catégories :', err)
       );
+
+    // Vérification de la connexion utilisateur via le localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
   }, []);
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
   const closeDropdown = () => setShowDropdown(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
 
   return (
     <header className="navbar">
@@ -58,7 +72,14 @@ function Navbar() {
           </ul>
         </nav>
         <div className="auth-links">
-          <Link to="/auth" className="nav-link">Se connecter / S'inscrire</Link>
+          {user ? (
+            <>
+              <span className="nav-user">Bonjour, {user.prenom} {user.nom}</span>
+              <button onClick={handleLogout} className="logout-btn">Se déconnecter</button>
+            </>
+          ) : (
+            <Link to="/auth" className="nav-link">Se connecter / S'inscrire</Link>
+          )}
         </div>
       </div>
     </header>

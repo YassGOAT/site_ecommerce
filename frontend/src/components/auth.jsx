@@ -1,7 +1,7 @@
 // src/components/Auth.jsx
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Auth.css';
-import { Link } from 'react-router-dom';
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,6 +13,7 @@ function Auth() {
     mot_de_passe: '',
   });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +22,7 @@ function Auth() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      // Connexion
+      // Requête de connexion
       fetch('http://localhost:8081/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,17 +37,22 @@ function Auth() {
             setMessage(data.error);
           } else {
             setMessage(data.message);
-            // Ici, tu peux enregistrer les infos de l'utilisateur ou rediriger vers une autre page
+            // Stocke l'utilisateur dans le localStorage
+            localStorage.setItem('user', JSON.stringify(data.user));
+            // Redirige vers la page d'accueil
+            navigate('/');
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+          setMessage("Erreur de connexion");
+        });
     } else {
-      // Inscription
-      const newUser = { ...formData };
+      // Requête d'inscription
       fetch('http://localhost:8081/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newUser),
+        body: JSON.stringify(formData),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -54,11 +60,14 @@ function Auth() {
             setMessage(data.error);
           } else {
             setMessage(data.message);
-            // Tu peux passer en mode login après une inscription réussie
+            // On peut passer au mode connexion après une inscription réussie
             setIsLogin(true);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+          setMessage("Erreur lors de l'inscription");
+        });
     }
   };
 
